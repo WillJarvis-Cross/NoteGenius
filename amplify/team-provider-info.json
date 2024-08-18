@@ -1,0 +1,38 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-notegenius-dev-14e93-authRole",
+      "UnauthRoleArn": "arn:aws:iam::533267111290:role/amplify-notegenius-dev-14e93-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::533267111290:role/amplify-notegenius-dev-14e93-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-notegenius-dev-14e93-deployment",
+      "UnauthRoleName": "amplify-notegenius-dev-14e93-unauthRole",
+      "StackName": "amplify-notegenius-dev-14e93",
+      "StackId": "arn:aws:cloudformation:us-east-1:533267111290:stack/amplify-notegenius-dev-14e93/f02da5b0-5d8d-11ef-81ad-0afff406bf47",
+      "AmplifyAppId": "d2inire8ytjhw8"
+    },
+    "categories": {
+      "auth": {
+        "notegenius54d0a91f": {}
+      }
+    }
+  },
+  "notegenius": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-notegenius-notegenius-61d73-authRole",
+      "UnauthRoleArn": "arn:aws:iam::533267111290:role/amplify-notegenius-notegenius-61d73-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::533267111290:role/amplify-notegenius-notegenius-61d73-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-notegenius-notegenius-61d73-deployment",
+      "UnauthRoleName": "amplify-notegenius-notegenius-61d73-unauthRole",
+      "StackName": "amplify-notegenius-notegenius-61d73",
+      "StackId": "arn:aws:cloudformation:us-east-1:533267111290:stack/amplify-notegenius-notegenius-61d73/03b661a0-5d91-11ef-b622-0e0df61b3a47",
+      "AmplifyAppId": "dafo5u4mbtnzi"
+    },
+    "categories": {
+      "auth": {
+        "notegenius3712a853": {}
+      }
+    }
+  }
+}

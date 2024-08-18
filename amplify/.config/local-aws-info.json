@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "amplify-dev-2"
+  },
+  "notegenius": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "amplify-dev-2"
+  }
+}

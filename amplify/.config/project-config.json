@@ -1,0 +1,18 @@
+{
+  "projectName": "NoteGenius",
+  "appId": "d3471mmif7m0mm",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "react",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "build",
+      "BuildCommand": "npm run-script build",
+      "StartCommand": "npm run-script start"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
+}
