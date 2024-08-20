@@ -1,29 +1,3 @@
-/*import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SignInPage from './components/SignInPage';
-import Homepage from './components/Homepage';
-import { withAuthenticator } from '@aws-amplify/ui-react';
-
-const App = () => {
-  console.log('App component rendered');
-  return (
-    <Router>
-      <Routes>
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/home" element={<Homepage />} />
-        <Route path="/" element={<Homepage />} /> 
-      </Routes>
-    </Router>
-  );
-}
-
-export default withAuthenticator(App, {
-  components: {
-    SignIn: SignInPage,
-  },
-});
-*/
-// App.jsx
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import SignInPage from './components/SignInPage';

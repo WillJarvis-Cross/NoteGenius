@@ -55,7 +55,7 @@ function SignInPage() {
         components={{
           Button: CustomButton,
           SignIn: {
-            Header: () => <h1>Sig In</h1>,
+            Header: () => <h1>Sign In</h1>,
           },
           SignUp: {
             Header: () => <h1>Sign Up</h1>,
