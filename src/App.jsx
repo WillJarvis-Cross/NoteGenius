@@ -27,7 +27,7 @@ export default withAuthenticator(App, {
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import SignInPage from './components/SignInPage';
-import Homepage from './components/Homepage';
+import HomePage from './components/HomePage';
 import { Authenticator } from '@aws-amplify/ui-react';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css'; // Import the styles for the Authenticator component
@@ -50,7 +50,7 @@ const AuthenticatedRoute = () => {
   const { authStatus } = useAuthenticator(context => [context.authStatus]);
 
   if (authStatus === 'authenticated') {
-    return <Homepage />;
+    return <HomePage />;
   } else {
     return <SignInPage />;
   }

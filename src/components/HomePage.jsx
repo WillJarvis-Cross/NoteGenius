@@ -34,7 +34,7 @@ const CustomButton = styled(Button)`
   }
 `;
 
-function Homepage() {
+function HomePage() {
     console.log("VES")
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
@@ -75,4 +75,4 @@ function Homepage() {
   );
 }
 
-export default withAuthenticator(Homepage);
+export default withAuthenticator(HomePage);
