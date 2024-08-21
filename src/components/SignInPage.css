@@ -1,5 +1,6 @@
 .sign-in-container {
-    position: relative; /* or position: fixed; */
+    width: 100vw;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -10,14 +11,14 @@
     height: 100vh;
   }
   
-  .amplify-authenticator {
-    max-width: 800px; /* Adjust the width as needed */
-    width: 100%;
-  }
+.amplify-authenticator {
+  max-width: 800px;
+  width: 100%;
+}
 
-  .amplify-authenticator__authenticationWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.amplify-authenticator__authenticationWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   
