@@ -40,7 +40,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegenius-61d73-deployment/amplify-cfn-templates/auth/notegenius3712a853-cloudformation-template.json",
         "logicalId": "authnotegenius3712a853"
       },
-      "lastPushTimeStamp": "2024-08-18T19:00:51.000Z",
+      "lastPushTimeStamp": "2024-08-22T17:03:10.549Z",
       "output": {
         "UserPoolId": "us-east-1_DuX79TSA1",
         "AppClientIDWeb": "bm2t13gh9ft1f3ccmeljp310c",
@@ -50,7 +50,24 @@
         "IdentityPoolName": "notegenius3712a853_identitypool_3712a853__notegenius",
         "UserPoolName": "notegenius3712a853_userpool_3712a853"
       },
-      "lastPushDirHash": "b6kXCX/u74iVRSaQcvFRxHTy4Ds="
+      "lastPushDirHash": "DEjVukIlOzMjpDSDkmjLWoIwz2g="
+    }
+  },
+  "storage": {
+    "notegeniusbucket": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2024-08-22T17:03:10.549Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegenius-61d73-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storagenotegeniusbucket"
+      },
+      "output": {
+        "BucketName": "notegenius-bucket61d73-notegenius",
+        "Region": "us-east-1"
+      },
+      "lastPushDirHash": "COryN98Wwi3r3V02CHwfCzRzXMs="
     }
   }
 }

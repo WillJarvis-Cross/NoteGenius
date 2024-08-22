@@ -205,7 +205,7 @@
         "TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegenius-61d73-deployment/amplify-cfn-templates/auth/notegenius3712a853-cloudformation-template.json",
         "Parameters": {
           "identityPoolName": "notegenius3712a853_identitypool_3712a853",
-          "allowUnauthenticatedIdentities": false,
+          "allowUnauthenticatedIdentities": true,
           "resourceNameTruncated": "notege3712a853",
           "userPoolName": "notegenius3712a853_userpool_3712a853",
           "autoVerifiedAttributes": "email",
@@ -248,6 +248,39 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
+          "env": "notegenius"
+        }
+      }
+    },
+    "storagenotegeniusbucket": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegenius-61d73-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "Parameters": {
+          "bucketName": "notegenius-bucket",
+          "selectedGuestPermissions": "s3:GetObject,s3:ListBucket",
+          "selectedAuthenticatedPermissions": "s3:PutObject,s3:GetObject,s3:ListBucket,s3:DeleteObject",
+          "unauthRoleName": {
+            "Ref": "UnauthRoleName"
+          },
+          "authRoleName": {
+            "Ref": "AuthRoleName"
+          },
+          "s3PrivatePolicy": "Private_policy_f37ee52d",
+          "s3ProtectedPolicy": "Protected_policy_f37ee52d",
+          "s3PublicPolicy": "Public_policy_f37ee52d",
+          "s3ReadPolicy": "read_policy_f37ee52d",
+          "s3UploadsPolicy": "Uploads_policy_f37ee52d",
+          "authPolicyName": "s3_amplify_f37ee52d",
+          "unauthPolicyName": "s3_amplify_f37ee52d",
+          "AuthenticatedAllowList": "ALLOW",
+          "GuestAllowList": "ALLOW",
+          "s3PermissionsAuthenticatedPrivate": "s3:PutObject,s3:GetObject,s3:DeleteObject",
+          "s3PermissionsAuthenticatedProtected": "s3:PutObject,s3:GetObject,s3:DeleteObject",
+          "s3PermissionsAuthenticatedPublic": "s3:PutObject,s3:GetObject,s3:DeleteObject",
+          "s3PermissionsAuthenticatedUploads": "s3:PutObject",
+          "s3PermissionsGuestPublic": "s3:GetObject",
+          "s3PermissionsGuestUploads": "DISALLOW",
           "env": "notegenius"
         }
       }
