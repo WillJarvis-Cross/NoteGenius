@@ -1,6 +1,6 @@
 {
   "identityPoolName": "notegenius3712a853_identitypool_3712a853",
-  "allowUnauthenticatedIdentities": false,
+  "allowUnauthenticatedIdentities": true,
   "resourceNameTruncated": "notege3712a853",
   "userPoolName": "notegenius3712a853_userpool_3712a853",
   "autoVerifiedAttributes": [

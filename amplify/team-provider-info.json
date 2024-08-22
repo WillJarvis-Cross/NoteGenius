@@ -32,6 +32,9 @@
     "categories": {
       "auth": {
         "notegenius3712a853": {}
+      },
+      "storage": {
+        "notegeniusbucket": {}
       }
     }
   }

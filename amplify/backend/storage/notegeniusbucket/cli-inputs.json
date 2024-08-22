@@ -1,0 +1,16 @@
+{
+  "resourceName": "notegeniusbucket",
+  "policyUUID": "f37ee52d",
+  "bucketName": "notegenius-bucket",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
