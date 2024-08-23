@@ -4,7 +4,7 @@ import { Amplify } from 'aws-amplify'
 import styled from 'styled-components'
 import awsExports from '../aws-exports'
 import './SignInPage.css'
-import { getFileUrl } from '../utils/storageService'
+//import { getFileUrl } from '../utils/storageService'
 
 Amplify.configure(awsExports)
 
@@ -26,7 +26,7 @@ const Logo = styled.img`
 `;
 
 function SignInPage() {
-  const [logoUrl, setLogoUrl] = useState(null)
+  /*const [logoUrl, setLogoUrl] = useState(null)
 
   useEffect(() => {
     async function fetchLogo() {
@@ -35,7 +35,9 @@ function SignInPage() {
     }
 
     fetchLogo()
-  }, [])
+  }, [])*/
+
+  // this line should go in header: {logoUrl && <Logo src={logoUrl} alt="Logo" />}
 
   return (
     <div className="sign-in-container">
@@ -46,7 +48,7 @@ function SignInPage() {
           SignIn: {
             Header: () => (
               <div>
-                {logoUrl && <Logo src={logoUrl} alt="Logo" />}
+                
                 <h1>Sign In</h1>
               </div>
             ),
@@ -54,7 +56,7 @@ function SignInPage() {
           SignUp: {
             Header: () => (
               <div>
-                {logoUrl && <Logo src={logoUrl} alt="Logo" />}
+                
                 <h1>Sign Up</h1>
               </div>
             ),
