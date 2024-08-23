@@ -1,73 +1,84 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-notegenius-notegenius-61d73-authRole",
-      "UnauthRoleArn": "arn:aws:iam::533267111290:role/amplify-notegenius-notegenius-61d73-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::533267111290:role/amplify-notegenius-notegenius-61d73-authRole",
+      "AuthRoleName": "amplify-notegenius-notegen-7e1f8-authRole",
+      "UnauthRoleArn": "arn:aws:iam::160885248633:role/amplify-notegenius-notegen-7e1f8-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::160885248633:role/amplify-notegenius-notegen-7e1f8-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-notegenius-notegenius-61d73-deployment",
-      "UnauthRoleName": "amplify-notegenius-notegenius-61d73-unauthRole",
-      "StackName": "amplify-notegenius-notegenius-61d73",
-      "StackId": "arn:aws:cloudformation:us-east-1:533267111290:stack/amplify-notegenius-notegenius-61d73/03b661a0-5d91-11ef-b622-0e0df61b3a47",
-      "AmplifyAppId": "dafo5u4mbtnzi"
+      "DeploymentBucketName": "amplify-notegenius-notegen-7e1f8-deployment",
+      "UnauthRoleName": "amplify-notegenius-notegen-7e1f8-unauthRole",
+      "StackName": "amplify-notegenius-notegen-7e1f8",
+      "StackId": "arn:aws:cloudformation:us-east-1:160885248633:stack/amplify-notegenius-notegen-7e1f8/a23c5f20-60b4-11ef-9c2c-0affdae051bd",
+      "AmplifyAppId": "d3omctdjrd3k0i"
     }
   },
   "auth": {
     "notegenius3712a853": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
       "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [],
-        "signupAttributes": [
-          "EMAIL"
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
           "passwordPolicyCharacters": []
         },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
+        "signupAttributes": [
+          "EMAIL"
         ],
+        "socialProviders": [],
+        "usernameAttributes": [],
         "verificationMechanisms": [
           "EMAIL"
         ]
       },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegenius-61d73-deployment/amplify-cfn-templates/auth/notegenius3712a853-cloudformation-template.json",
-        "logicalId": "authnotegenius3712a853"
-      },
-      "lastPushTimeStamp": "2024-08-22T17:03:10.549Z",
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
       "output": {
-        "UserPoolId": "us-east-1_DuX79TSA1",
-        "AppClientIDWeb": "bm2t13gh9ft1f3ccmeljp310c",
-        "AppClientID": "656dnb3ud17ka23oh4mf07sso4",
-        "IdentityPoolId": "us-east-1:0db2e242-4fbf-4a9c-8cd3-f8ac541033b9",
-        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:533267111290:userpool/us-east-1_DuX79TSA1",
-        "IdentityPoolName": "notegenius3712a853_identitypool_3712a853__notegenius",
+        "UserPoolId": "us-east-1_BkwMmb23d",
+        "AppClientIDWeb": "5bndbedk9131kb3chpr9f2m08g",
+        "AppClientID": "73vnuphtqav9gvh5jtjric27u",
+        "IdentityPoolId": "us-east-1:3a9c8758-e5c3-4c6e-bdfd-625012c8f2e4",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:160885248633:userpool/us-east-1_BkwMmb23d",
+        "IdentityPoolName": "notegenius3712a853_identitypool_3712a853__notegen",
         "UserPoolName": "notegenius3712a853_userpool_3712a853"
       },
-      "lastPushDirHash": "DEjVukIlOzMjpDSDkmjLWoIwz2g="
+      "lastPushTimeStamp": "2024-08-23T17:17:02.608Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegen-7e1f8-deployment/amplify-cfn-templates/auth/notegenius3712a853-cloudformation-template.json",
+        "logicalId": "authnotegenius3712a853"
+      }
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "providerPlugin": "awscloudformation",
+      "service": "amplifyhosting",
+      "type": "manual",
+      "output": {},
+      "lastPushTimeStamp": "2024-08-23T17:17:02.613Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegen-7e1f8-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "logicalId": "hostingamplifyhosting"
+      }
     }
   },
   "storage": {
     "notegeniusbucket": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
       "dependsOn": [],
-      "lastPushTimeStamp": "2024-08-22T17:03:10.549Z",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegenius-61d73-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
-        "logicalId": "storagenotegeniusbucket"
-      },
+      "providerPlugin": "awscloudformation",
+      "service": "S3",
       "output": {
-        "BucketName": "notegenius-bucket61d73-notegenius",
+        "BucketName": "notegenius-bucket7e1f8-notegen",
         "Region": "us-east-1"
       },
-      "lastPushDirHash": "COryN98Wwi3r3V02CHwfCzRzXMs="
+      "lastPushTimeStamp": "2024-08-23T17:17:03.025Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegen-7e1f8-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storagenotegeniusbucket"
+      }
     }
   }
 }

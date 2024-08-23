@@ -37,5 +37,59 @@
         "notegeniusbucket": {}
       }
     }
+  },
+  "notegen": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-notegenius-notegen-7e1f8-authRole",
+      "UnauthRoleArn": "arn:aws:iam::160885248633:role/amplify-notegenius-notegen-7e1f8-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::160885248633:role/amplify-notegenius-notegen-7e1f8-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-notegenius-notegen-7e1f8-deployment",
+      "UnauthRoleName": "amplify-notegenius-notegen-7e1f8-unauthRole",
+      "StackName": "amplify-notegenius-notegen-7e1f8",
+      "StackId": "arn:aws:cloudformation:us-east-1:160885248633:stack/amplify-notegenius-notegen-7e1f8/a23c5f20-60b4-11ef-9c2c-0affdae051bd",
+      "AmplifyAppId": "d3omctdjrd3k0i"
+    },
+    "categories": {
+      "auth": {
+        "notegenius3712a853": {}
+      },
+      "storage": {
+        "notegeniusbucket": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3omctdjrd3k0i",
+          "type": "manual"
+        }
+      }
+    }
+  },
+  "devenv": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-notegenius-devenv-734f6-authRole",
+      "UnauthRoleArn": "arn:aws:iam::160885248633:role/amplify-notegenius-devenv-734f6-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::160885248633:role/amplify-notegenius-devenv-734f6-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-notegenius-devenv-734f6-deployment",
+      "UnauthRoleName": "amplify-notegenius-devenv-734f6-unauthRole",
+      "StackName": "amplify-notegenius-devenv-734f6",
+      "StackId": "arn:aws:cloudformation:us-east-1:160885248633:stack/amplify-notegenius-devenv-734f6/89ee2ae0-60bc-11ef-aa7d-0affcc3f1c57",
+      "AmplifyAppId": "d3omctdjrd3k0i"
+    },
+    "categories": {
+      "auth": {
+        "notegenius3712a853": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3omctdjrd3k0i",
+          "type": "manual"
+        }
+      },
+      "storage": {
+        "notegeniusbucket": {}
+      }
+    }
   }
 }
