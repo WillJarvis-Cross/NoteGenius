@@ -1,4 +1,4 @@
-import { Storage } from 'aws-amplify';
+import { Storage } from '@aws-amplify/storage'
 
 // Function to upload a file to S3
 export async function uploadFile(file) {
