@@ -187,7 +187,7 @@
     "UserPoolClientWeb": {
       "Type": "AWS::Cognito::UserPoolClient",
       "Properties": {
-        "ClientName": "notege3712a853_app_clientWeb",
+        "ClientName": "notege54d0a91f_app_clientWeb",
         "RefreshTokenValidity": {
           "Ref": "userpoolClientRefreshTokenValidity"
         },
@@ -205,7 +205,7 @@
     "UserPoolClient": {
       "Type": "AWS::Cognito::UserPoolClient",
       "Properties": {
-        "ClientName": "notege3712a853_app_client",
+        "ClientName": "notege54d0a91f_app_client",
         "GenerateSecret": {
           "Ref": "userpoolClientGenerateSecret"
         },
@@ -248,7 +248,7 @@
               "Fn::Join": [
                 "",
                 [
-                  "upClientLambdaRole3712a853",
+                  "upClientLambdaRole54d0a91f",
                   {
                     "Fn::Select": [
                       3,
@@ -320,12 +320,12 @@
         "IdentityPoolName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "notegenius3712a853_identitypool_3712a853",
+            "notegenius54d0a91f_identitypool_54d0a91f",
             {
               "Fn::Join": [
                 "",
                 [
-                  "notegenius3712a853_identitypool_3712a853__",
+                  "notegenius54d0a91f_identitypool_54d0a91f__",
                   {
                     "Ref": "env"
                   }

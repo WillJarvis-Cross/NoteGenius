@@ -202,7 +202,7 @@
     "authnotegenius3712a853": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegenius-61d73-deployment/amplify-cfn-templates/auth/notegenius3712a853-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-devenv-734f6-deployment/amplify-cfn-templates/auth/notegenius3712a853-cloudformation-template.json",
         "Parameters": {
           "identityPoolName": "notegenius3712a853_identitypool_3712a853",
           "allowUnauthenticatedIdentities": true,
@@ -248,14 +248,25 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
-          "env": "notegenius"
+          "env": "devenv"
+        }
+      }
+    },
+    "hostingamplifyhosting": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-devenv-734f6-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "Parameters": {
+          "appId": "d3omctdjrd3k0i",
+          "type": "manual",
+          "env": "devenv"
         }
       }
     },
     "storagenotegeniusbucket": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-notegenius-61d73-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-notegenius-devenv-734f6-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
         "Parameters": {
           "bucketName": "notegenius-bucket",
           "selectedGuestPermissions": "s3:GetObject,s3:ListBucket",
@@ -281,7 +292,7 @@
           "s3PermissionsAuthenticatedUploads": "s3:PutObject",
           "s3PermissionsGuestPublic": "s3:GetObject",
           "s3PermissionsGuestUploads": "DISALLOW",
-          "env": "notegenius"
+          "env": "devenv"
         }
       }
     },

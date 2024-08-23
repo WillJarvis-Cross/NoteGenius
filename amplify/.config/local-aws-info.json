@@ -8,5 +8,15 @@
     "configLevel": "project",
     "useProfile": true,
     "profileName": "amplify-dev-2"
+  },
+  "notegen": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "amplify-dev"
+  },
+  "devenv": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "amplify-dev"
   }
 }
