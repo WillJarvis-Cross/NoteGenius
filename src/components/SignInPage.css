@@ -11,14 +11,32 @@
     height: 100vh;
   }
   
-.amplify-authenticator {
-  max-width: 800px;
-  width: 100%;
-}
-
-.amplify-authenticator__authenticationWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .amplify-authenticator .amplify-header {
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin if needed */
+    text-align: center; /* Center-align content */
+  }
+  .auth-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px; /* Space between logo and other content */
+  }
   
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Add custom padding */
+  }
+  
+  .logo-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+  
+  .amplify-authenticator .amplify-header h1 {
+    margin: 0; /* Remove default margin from the header text */
+    font-size: 1.5rem; /* Adjust font size if needed */
+  }
