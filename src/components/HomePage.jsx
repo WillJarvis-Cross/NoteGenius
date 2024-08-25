@@ -57,6 +57,7 @@ function HomePage() {
     <div className='outerContainer'>
       <div className='container'>
         <h1 className='welcomeMessage'>Welcome to the Homepage!</h1>
+        <StorageImage alt="cat" path="logo.png" />
         <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
       </div>
     </div>

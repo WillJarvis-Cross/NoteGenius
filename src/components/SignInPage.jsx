@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Authenticator, Button } from '@aws-amplify/ui-react'
 import { Amplify } from 'aws-amplify'
 import styled from 'styled-components'
@@ -39,6 +39,7 @@ function SignInPage() {
 
   // this line should go in header: {logoUrl && <Logo src={logoUrl} alt="Logo" />}
 
+  const logoUrl = 'https://notegenius-bucket7e1f8-notegen.s3.amazonaws.com/logo-color2.png'
   return (
     <div className="sign-in-container">
       <Authenticator
@@ -47,17 +48,15 @@ function SignInPage() {
           Button: CustomButton,
           SignIn: {
             Header: () => (
-              <div>
-                
-                <h1>Sign In</h1>
+              <div className="header-container">
+                <img src={logoUrl} alt="Logo" className="logo-image" />
               </div>
             ),
           },
           SignUp: {
             Header: () => (
-              <div>
-                
-                <h1>Sign Up</h1>
+              <div className="header-container">
+                <img src={logoUrl} alt="Logo" className="logo-image" />
               </div>
             ),
           },
