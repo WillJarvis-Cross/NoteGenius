@@ -21,7 +21,54 @@ const CustomButton = styled(Button)`
   }
 `
 
-function HomePage() {
+const HomePage = () => {
+  const [classes, setClasses] = useState(['Math', 'Science', 'History']);
+  const [currentClass, setCurrentClass] = useState(classes[0]);
+
+  const addClass = (newClass) => {
+    setClasses([...classes, newClass]);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut()
+      window.location.reload()
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }
+
+  return (
+    <div className='outerContainer'>
+    <div className="home-page">
+      <div className="class-list">
+        <h2 className='title'>Classes</h2>
+        <ul>
+          {classes.map((className, index) => (
+            <li 
+              key={index} 
+              onClick={() => setCurrentClass(className)}
+              className={className === currentClass ? 'active' : 'title'}
+            >
+              {className}
+            </li>
+          ))}
+        </ul>
+        <button onClick={() => addClass(prompt('Enter new class name'))}>Add Class</button>
+      </div>
+      <div className="class-details">
+        <h2 className='title'>{currentClass}</h2>
+        <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
+      </div>
+    </div>
+    </div>
+  );
+};
+
+export default HomePage;
+
+
+/*function HomePage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const navigate = useNavigate()
 
@@ -57,11 +104,10 @@ function HomePage() {
     <div className='outerContainer'>
       <div className='container'>
         <h1 className='welcomeMessage'>Welcome to the Homepage!</h1>
-        <StorageImage alt="cat" path="logo.png" />
         <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
       </div>
     </div>
   )
 }
 
-export default withAuthenticator(HomePage)
+export default withAuthenticator(HomePage)*/
