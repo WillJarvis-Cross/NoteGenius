@@ -29,3 +29,45 @@
     font-size: 2.5rem;
   }
 }
+
+.home-page {
+display: grid;
+grid-template-columns: 1fr 3fr;
+height: 100vh;
+width: 100%;
+background-color: #f0f0f0;
+}
+
+.class-list {
+padding: 20px;
+border-right: 1px solid #3d2a2a;
+}
+
+.class-list ul {
+list-style-type: none;
+padding: 0;
+}
+
+.class-list li {
+padding: 10px;
+cursor: pointer;
+}
+
+.class-list li.active {
+background-color: #892f2f;
+font-weight: bold;
+border-radius: 8px;
+}
+
+.class-details {
+padding: 20px;
+}
+
+.title {
+    color: #3d2a2a;
+}
+
+.outerContainer {
+    background-color: #fff;
+}
+  
