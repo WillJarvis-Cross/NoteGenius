@@ -70,4 +70,17 @@ padding: 20px;
 .outerContainer {
     background-color: #fff;
 }
-  
+
+.signout-button {
+  position: absolute;
+  bottom: 20px;
+}
+
+.class-input {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+  caret-color: #3d2a2a;
+  color: #3d2a2a;
+  margin-bottom: 8px;
+}
