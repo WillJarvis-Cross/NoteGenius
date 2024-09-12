@@ -15,19 +15,105 @@ const CustomButton = styled(Button)`
   border-radius: 4px
   padding: 10px 20px
   font-size: 16px
+  bottom: 20px
 
   &:hover {
     background-color: #0056b3
   }
 `
+const HiddenFileInput = styled.input`
+  display: none;
+`;
+
+const TalkButton = styled(CustomButton)`
+  background-color: #28a745;
+  color: #ffffff;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+
+  &:hover {
+    background-color: #218838;
+  }
+`;
+
+const ChatBox = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
+  z-index: 1000;
+  overflow: hidden;
+`;
+
+const ChatHeader = styled.div`
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+`;
+
+const ChatBody = styled.div`
+  padding: 10px;
+  height: calc(100% - 80px); /* Adjust height for header and input */
+  overflow-y: auto;
+`;
+
+const ChatInputContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-top: 1px solid #ccc;
+`;
+
+const ChatInput = styled.input`
+  width: calc(100% - 80px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+const SendButton = styled(CustomButton)`
+  width: 70px;
+  height: 40px;
+  margin-left: 10px;
+`;
 
 const HomePage = () => {
-  const [classes, setClasses] = useState(['Math', 'Science', 'History']);
-  const [currentClass, setCurrentClass] = useState(classes[0]);
+  const [classes, setClasses] = useState(['Math', 'Science', 'History'])
+  const [currentClass, setCurrentClass] = useState(classes[0])
+  const [isAddingClass, setIsAddingClass] = useState(false)
+  const [newClassName, setNewClassName] = useState('')
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [isChatVisible, setIsChatVisible] = useState(false);
+  const fileInputRef = React.createRef()
 
-  const addClass = (newClass) => {
-    setClasses([...classes, newClass]);
-  };
+  const handleAddClass = () => {
+    setIsAddingClass(true)
+  }
+
+  const handleClassNameChange = (e) => {
+    setNewClassName(e.target.value)
+  }
+
+  const handleAddClassSubmit = (e) => {
+    e.preventDefault()
+    if (newClassName.trim()) {
+      setClasses([...classes, newClassName.trim()])
+      setNewClassName('')
+      setIsAddingClass(false)
+    }
+  }
 
   const handleSignOut = async () => {
     try {
@@ -37,6 +123,23 @@ const HomePage = () => {
       console.error('Error signing out:', error)
     }
   }
+
+  const handleFileUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleFileUpload = () => {
+    // Implement file upload logic here
+    console.log('File to upload:', selectedFile);
+  };
+
+  const handleTalkWithTutor = () => {
+    setIsChatVisible(!isChatVisible);
+  };
 
   return (
     <div className='outerContainer'>
@@ -54,60 +157,56 @@ const HomePage = () => {
             </li>
           ))}
         </ul>
-        <button onClick={() => addClass(prompt('Enter new class name'))}>Add Class</button>
+        {isAddingClass ? (
+            <form onSubmit={handleAddClassSubmit}>
+              <input 
+                className='class-input'
+                type="text" 
+                value={newClassName} 
+                onChange={handleClassNameChange} 
+                placeholder="Enter new class name"
+                autoFocus
+              />
+              <button type="submit">Add</button>
+            </form>
+          ) : (
+            <button onClick={handleAddClass}>Add Class</button>
+          )}
+        <div className='signout-button'>
+          <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
+        </div>
       </div>
       <div className="class-details">
         <h2 className='title'>{currentClass}</h2>
-        <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
+        <CustomButton onClick={handleFileUploadClick}>Upload Note</CustomButton>
+          <HiddenFileInput 
+            type="file" 
+            accept=".pdf,.docx,.txt,.md,image/*" 
+            onChange={handleFileChange} 
+            ref={fileInputRef} 
+          />
+          {selectedFile && <p>Selected file: {selectedFile.name}</p>}
+          <TalkButton onClick={handleTalkWithTutor}>
+            Talk with your virtual {currentClass} tutor
+          </TalkButton>
+
+          <ChatBox isVisible={isChatVisible}>
+            <ChatHeader>Chat with {currentClass} Tutor</ChatHeader>
+            <ChatBody>
+              {/* Chat messages go here */}
+            </ChatBody>
+            <ChatInputContainer className='class-input'>
+              <ChatInput type="text" placeholder="Type your message..." />
+              <SendButton onClick={() => {/* Implement send message logic here */}}>Send</SendButton>
+            </ChatInputContainer>
+          </ChatBox>
       </div>
+      
+      
     </div>
+    
     </div>
   );
 };
 
 export default HomePage;
-
-
-/*function HomePage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    const checkAuthState = async () => {
-      try {
-        //await currentAuthenticatedUser()
-        setIsAuthenticated(true)
-      } catch (error) {
-        console.error('Error checking authentication state:', error)
-        setIsAuthenticated(false)
-        navigate('/signin') // Redirect to sign-in page if not authenticated
-      }
-    }
-
-    checkAuthState()
-  }, [navigate])
-
-  const handleSignOut = async () => {
-    try {
-      await signOut()
-      window.location.reload()
-    } catch (error) {
-      console.error('Error signing out:', error)
-    }
-  }
-
-  if (!isAuthenticated) {
-    return null // or you can render a loading spinner or message
-  }
-
-  return (
-    <div className='outerContainer'>
-      <div className='container'>
-        <h1 className='welcomeMessage'>Welcome to the Homepage!</h1>
-        <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
-      </div>
-    </div>
-  )
-}
-
-export default withAuthenticator(HomePage)*/
