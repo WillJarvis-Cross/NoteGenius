@@ -1,7 +1,6 @@
 import { Button } from '@aws-amplify/ui-react';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import './ChatBox.css';
 
 const ChatContainer = styled.div`
   position: fixed;
@@ -62,6 +61,17 @@ const ChatBody = styled.div`
   overflow-y: auto;
 `;
 
+const ChatSection = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  color: #000;
+  border-top: 1px solid #ccc;
+  display: 'flex';
+`;
+
 const ChatInput = styled.input`
   border: none;
   padding: 10px;
@@ -70,6 +80,21 @@ const ChatInput = styled.input`
   outline: none;
   background-color: #fff;
   color: #000;
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    color: #121212;
+  }
 `;
 
 const ChatBox = ({ $currentClass }) => {
@@ -95,13 +120,16 @@ const ChatBox = ({ $currentClass }) => {
       </TalkButton>
       {isChatVisible && (
         <ChatContainer>
-          <ChatHeader>{`Virtual ${$currentClass} Tutor`}</ChatHeader>
+          <ChatHeader>
+            <CloseButton onClick={handleTalkWithTutor}>X</CloseButton>
+            {`Virtual ${$currentClass} Tutor`}
+          </ChatHeader>
           <ChatBody>
             {messages.map((message, index) => (
               <div key={index}>{message.text}</div>
             ))}
           </ChatBody>
-          <div className="chat-section" style={{ display: 'flex' }}>
+          <ChatSection style={{ display: 'flex' }}>
             <ChatInput
               type="text"
               placeholder="Type a message..."
@@ -116,7 +144,7 @@ const ChatBox = ({ $currentClass }) => {
             >
               Send
             </SendButton>
-          </div>
+          </ChatSection>
         </ChatContainer>
       )}
     </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
-import styled from 'styled-components';
 import awsExports from '../aws-exports';
 import { signOut } from 'aws-amplify/auth';
 import ChatBox from './ChatBox';
@@ -9,80 +8,12 @@ import './HomePage.css';
 
 Amplify.configure(awsExports);
 
-const CustomButton = styled(Button)`
-  background-color: #007bff
-  color: #0000ff
-  border-radius: 4px
-  padding: 10px 20px
-  font-size: 16px
-  bottom: 20px
-
-  &:hover {
-    background-color: #0056b3
-  }
-`;
-const HiddenFileInput = styled.input`
-  display: none;
-`;
-
-const TalkButton = styled(CustomButton)`
-  background-color: #28a745;
-  color: #ffffff;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-
-  &:hover {
-    background-color: #218838;
-  }
-`;
-
-const ChatHeader = styled.div`
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px;
-  font-size: 16px;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-`;
-
-const ChatBody = styled.div`
-  padding: 10px;
-  height: calc(100% - 80px); /* Adjust height for header and input */
-  overflow-y: auto;
-`;
-
-const ChatInputContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-top: 1px solid #ccc;
-`;
-
-const ChatInput = styled.input`
-  width: calc(100% - 80px);
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #000000;
-  background-color: #ffffff;
-`;
-
-const SendButton = styled(CustomButton)`
-  width: 70px;
-  height: 40px;
-  margin-left: 10px;
-`;
-
 const HomePage = () => {
   const [classes, setClasses] = useState(['Math', 'Science', 'History']);
   const [currentClass, setCurrentClass] = useState(classes[0]);
   const [isAddingClass, setIsAddingClass] = useState(false);
   const [newClassName, setNewClassName] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
-  const [isChatVisible, setIsChatVisible] = useState(false);
   const fileInputRef = React.createRef();
 
   const handleAddClass = () => {
@@ -156,15 +87,16 @@ const HomePage = () => {
             <button onClick={handleAddClass}>Add Class</button>
           )}
           <div className="signout-button">
-            <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
+            <Button onClick={handleSignOut}>Sign Out</Button>
           </div>
         </div>
         <div className="class-details">
           <h2 className="title">{currentClass}</h2>
-          <CustomButton onClick={handleFileUploadClick}>
+          <Button onClick={handleFileUploadClick}>
             Upload Note
-          </CustomButton>
-          <HiddenFileInput
+          </Button>
+          <input
+            style={{ display: "none" }}
             type="file"
             accept=".pdf,.docx,.txt,.md,image/*"
             onChange={handleFileChange}
