@@ -122,9 +122,7 @@
     "UserPool": {
       "Type": "AWS::Cognito::UserPool",
       "Properties": {
-        "AutoVerifiedAttributes": [
-          "email"
-        ],
+        "AutoVerifiedAttributes": ["email"],
         "EmailVerificationMessage": {
           "Ref": "emailVerificationMessage"
         },
@@ -153,9 +151,7 @@
           }
         ],
         "UserAttributeUpdateSettings": {
-          "AttributesRequireVerificationBeforeUpdate": [
-            "email"
-          ]
+          "AttributesRequireVerificationBeforeUpdate": ["email"]
         },
         "UserPoolName": {
           "Fn::If": [
@@ -198,9 +194,7 @@
           "Ref": "UserPool"
         }
       },
-      "DependsOn": [
-        "UserPool"
-      ]
+      "DependsOn": ["UserPool"]
     },
     "UserPoolClient": {
       "Type": "AWS::Cognito::UserPoolClient",
@@ -219,9 +213,7 @@
           "Ref": "UserPool"
         }
       },
-      "DependsOn": [
-        "UserPool"
-      ]
+      "DependsOn": ["UserPool"]
     },
     "UserPoolClientRole": {
       "Type": "AWS::IAM::Role",
@@ -351,9 +343,7 @@
           }
         }
       },
-      "DependsOn": [
-        "IdentityPool"
-      ]
+      "DependsOn": ["IdentityPool"]
     }
   },
   "Outputs": {
@@ -365,10 +355,7 @@
     },
     "IdentityPoolName": {
       "Value": {
-        "Fn::GetAtt": [
-          "IdentityPool",
-          "Name"
-        ]
+        "Fn::GetAtt": ["IdentityPool", "Name"]
       }
     },
     "UserPoolId": {
@@ -380,10 +367,7 @@
     "UserPoolArn": {
       "Description": "Arn for the user pool",
       "Value": {
-        "Fn::GetAtt": [
-          "UserPool",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["UserPool", "Arn"]
       }
     },
     "UserPoolName": {

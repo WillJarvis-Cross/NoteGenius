@@ -21,7 +21,7 @@ const App = () => {
 };
 
 const AuthenticatedRoute = () => {
-  const { authStatus } = useAuthenticator(context => [context.authStatus]);
+  const { authStatus } = useAuthenticator((context) => [context.authStatus]);
 
   if (authStatus === 'authenticated') {
     return <HomePage />;
@@ -31,4 +31,3 @@ const AuthenticatedRoute = () => {
 };
 
 export default App;
-

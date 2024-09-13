@@ -1,9 +1,6 @@
 {
   "bucketName": "notegenius-bucket",
-  "selectedGuestPermissions": [
-    "s3:GetObject",
-    "s3:ListBucket"
-  ],
+  "selectedGuestPermissions": ["s3:GetObject", "s3:ListBucket"],
   "selectedAuthenticatedPermissions": [
     "s3:PutObject",
     "s3:GetObject",
