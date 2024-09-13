@@ -97,3 +97,8 @@
 .custom-button:hover {
   background-color: #0056b3;
 }
+
+.dots-button {
+  right: 4px;
+  border: none;
+}
