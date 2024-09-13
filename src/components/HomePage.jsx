@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
+import styled from 'styled-components';
 import awsExports from '../aws-exports';
 import { signOut } from 'aws-amplify/auth';
 import ChatBox from './ChatBox';
@@ -8,12 +9,46 @@ import './HomePage.css';
 
 Amplify.configure(awsExports);
 
+const DotsButton = styled.button`
+  background: none;
+  border: none;
+  font-weight: bold;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 8px;
+  margin-left: auto;
+  width: 30px;
+  height: 40px;
+  color: ${(props) => (props.isActive ? 'white' : 'black')};
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent background */
+    border-radius: 50%; /* Makes the background circular */
+    
+  }
+`;
+
+const ListItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+
 const HomePage = () => {
   const [classes, setClasses] = useState(['Math', 'Science', 'History']);
   const [currentClass, setCurrentClass] = useState(classes[0]);
   const [isAddingClass, setIsAddingClass] = useState(false);
   const [newClassName, setNewClassName] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState(null)
   const fileInputRef = React.createRef();
 
   const handleAddClass = () => {
@@ -62,13 +97,22 @@ const HomePage = () => {
           <h2 className="title">Classes</h2>
           <ul>
             {classes.map((className, index) => (
-              <li
+              <ListItem
                 key={index}
                 onClick={() => setCurrentClass(className)}
                 className={className === currentClass ? 'active' : 'title'}
               >
                 {className}
-              </li>
+                <DotsButton 
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setActiveDropdown(index === activeDropdown ? null : index)
+                  }}
+                  isActive={className === currentClass}
+                >
+                  &#x22EE;
+                </DotsButton>
+              </ListItem>
             ))}
           </ul>
           {isAddingClass ? (
