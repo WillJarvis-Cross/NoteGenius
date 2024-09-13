@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { Authenticator, Button } from '@aws-amplify/ui-react'
-import { Amplify } from 'aws-amplify'
-import styled from 'styled-components'
-import awsExports from '../aws-exports'
-import './SignInPage.css'
+import React, { useEffect, useState } from 'react';
+import { Authenticator, Button } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import styled from 'styled-components';
+import awsExports from '../aws-exports';
+import './SignInPage.css';
 //import { getFileUrl } from '../utils/storageService'
 
-Amplify.configure(awsExports)
+Amplify.configure(awsExports);
 
 // Styled components
 const CustomButton = styled(Button)`
@@ -19,7 +19,7 @@ const CustomButton = styled(Button)`
   &:hover {
     background-color: #0056b3
   }
-`
+`;
 const Logo = styled.img`
   width: 150px; // Adjust the size of the logo
   margin-bottom: 20px;
@@ -39,7 +39,8 @@ function SignInPage() {
 
   // this line should go in header: {logoUrl && <Logo src={logoUrl} alt="Logo" />}
 
-  const logoUrl = 'https://notegenius-bucket7e1f8-notegen.s3.amazonaws.com/logo-color2.png'
+  const logoUrl =
+    'https://notegenius-bucket7e1f8-notegen.s3.amazonaws.com/logo-color2.png';
   return (
     <div className="sign-in-container">
       <Authenticator
@@ -70,8 +71,7 @@ function SignInPage() {
         )}
       </Authenticator>
     </div>
-  )
+  );
 }
 
-
-export default SignInPage
+export default SignInPage;

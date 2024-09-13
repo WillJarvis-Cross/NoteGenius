@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { Button, withAuthenticator } from '@aws-amplify/ui-react'
-import { Amplify } from 'aws-amplify'
-import styled from 'styled-components'
-import awsExports from '../aws-exports'
-import { signOut } from 'aws-amplify/auth'
-import { useNavigate } from 'react-router-dom'
-import './HomePage.css'
+import React, { useState } from 'react';
+import { Button } from '@aws-amplify/ui-react';
+import { Amplify } from 'aws-amplify';
+import styled from 'styled-components';
+import awsExports from '../aws-exports';
+import { signOut } from 'aws-amplify/auth';
+import ChatBox from './ChatBox';
+import './HomePage.css';
 
-Amplify.configure(awsExports)
+Amplify.configure(awsExports);
 
 const CustomButton = styled(Button)`
   background-color: #007bff
@@ -20,7 +20,7 @@ const CustomButton = styled(Button)`
   &:hover {
     background-color: #0056b3
   }
-`
+`;
 const HiddenFileInput = styled.input`
   display: none;
 `;
@@ -29,27 +29,12 @@ const TalkButton = styled(CustomButton)`
   background-color: #28a745;
   color: #ffffff;
   position: fixed;
-  bottom: 80px;
+  bottom: 20px;
   right: 20px;
 
   &:hover {
     background-color: #218838;
   }
-`;
-
-const ChatBox = styled.div`
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 300px;
-  height: 400px;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
-  z-index: 1000;
-  overflow: hidden;
 `;
 
 const ChatHeader = styled.div`
@@ -81,6 +66,8 @@ const ChatInput = styled.input`
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  color: #000000;
+  background-color: #ffffff;
 `;
 
 const SendButton = styled(CustomButton)`
@@ -90,39 +77,39 @@ const SendButton = styled(CustomButton)`
 `;
 
 const HomePage = () => {
-  const [classes, setClasses] = useState(['Math', 'Science', 'History'])
-  const [currentClass, setCurrentClass] = useState(classes[0])
-  const [isAddingClass, setIsAddingClass] = useState(false)
-  const [newClassName, setNewClassName] = useState('')
-  const [selectedFile, setSelectedFile] = useState(null)
+  const [classes, setClasses] = useState(['Math', 'Science', 'History']);
+  const [currentClass, setCurrentClass] = useState(classes[0]);
+  const [isAddingClass, setIsAddingClass] = useState(false);
+  const [newClassName, setNewClassName] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
   const [isChatVisible, setIsChatVisible] = useState(false);
-  const fileInputRef = React.createRef()
+  const fileInputRef = React.createRef();
 
   const handleAddClass = () => {
-    setIsAddingClass(true)
-  }
+    setIsAddingClass(true);
+  };
 
   const handleClassNameChange = (e) => {
-    setNewClassName(e.target.value)
-  }
+    setNewClassName(e.target.value);
+  };
 
   const handleAddClassSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (newClassName.trim()) {
-      setClasses([...classes, newClassName.trim()])
-      setNewClassName('')
-      setIsAddingClass(false)
+      setClasses([...classes, newClassName.trim()]);
+      setNewClassName('');
+      setIsAddingClass(false);
     }
-  }
+  };
 
   const handleSignOut = async () => {
     try {
-      await signOut()
-      window.location.reload()
+      await signOut();
+      window.location.reload();
     } catch (error) {
-      console.error('Error signing out:', error)
+      console.error('Error signing out:', error);
     }
-  }
+  };
 
   const handleFileUploadClick = () => {
     fileInputRef.current.click();
@@ -137,33 +124,29 @@ const HomePage = () => {
     console.log('File to upload:', selectedFile);
   };
 
-  const handleTalkWithTutor = () => {
-    setIsChatVisible(!isChatVisible);
-  };
-
   return (
-    <div className='outerContainer'>
-    <div className="home-page">
-      <div className="class-list">
-        <h2 className='title'>Classes</h2>
-        <ul>
-          {classes.map((className, index) => (
-            <li 
-              key={index} 
-              onClick={() => setCurrentClass(className)}
-              className={className === currentClass ? 'active' : 'title'}
-            >
-              {className}
-            </li>
-          ))}
-        </ul>
-        {isAddingClass ? (
+    <div className="outerContainer">
+      <div className="home-page">
+        <div className="class-list">
+          <h2 className="title">Classes</h2>
+          <ul>
+            {classes.map((className, index) => (
+              <li
+                key={index}
+                onClick={() => setCurrentClass(className)}
+                className={className === currentClass ? 'active' : 'title'}
+              >
+                {className}
+              </li>
+            ))}
+          </ul>
+          {isAddingClass ? (
             <form onSubmit={handleAddClassSubmit}>
-              <input 
-                className='class-input'
-                type="text" 
-                value={newClassName} 
-                onChange={handleClassNameChange} 
+              <input
+                className="class-input"
+                type="text"
+                value={newClassName}
+                onChange={handleClassNameChange}
                 placeholder="Enter new class name"
                 autoFocus
               />
@@ -172,39 +155,26 @@ const HomePage = () => {
           ) : (
             <button onClick={handleAddClass}>Add Class</button>
           )}
-        <div className='signout-button'>
-          <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
+          <div className="signout-button">
+            <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
+          </div>
         </div>
-      </div>
-      <div className="class-details">
-        <h2 className='title'>{currentClass}</h2>
-        <CustomButton onClick={handleFileUploadClick}>Upload Note</CustomButton>
-          <HiddenFileInput 
-            type="file" 
-            accept=".pdf,.docx,.txt,.md,image/*" 
-            onChange={handleFileChange} 
-            ref={fileInputRef} 
+        <div className="class-details">
+          <h2 className="title">{currentClass}</h2>
+          <CustomButton onClick={handleFileUploadClick}>
+            Upload Note
+          </CustomButton>
+          <HiddenFileInput
+            type="file"
+            accept=".pdf,.docx,.txt,.md,image/*"
+            onChange={handleFileChange}
+            ref={fileInputRef}
           />
           {selectedFile && <p>Selected file: {selectedFile.name}</p>}
-          <TalkButton onClick={handleTalkWithTutor}>
-            Talk with your virtual {currentClass} tutor
-          </TalkButton>
 
-          <ChatBox isVisible={isChatVisible}>
-            <ChatHeader>Chat with {currentClass} Tutor</ChatHeader>
-            <ChatBody>
-              {/* Chat messages go here */}
-            </ChatBody>
-            <ChatInputContainer className='class-input'>
-              <ChatInput type="text" placeholder="Type your message..." />
-              <SendButton onClick={() => {/* Implement send message logic here */}}>Send</SendButton>
-            </ChatInputContainer>
-          </ChatBox>
+          <ChatBox $currentClass={currentClass} />
+        </div>
       </div>
-      
-      
-    </div>
-    
     </div>
   );
 };

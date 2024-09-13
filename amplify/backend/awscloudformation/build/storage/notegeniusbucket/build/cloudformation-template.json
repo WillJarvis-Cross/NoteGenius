@@ -242,19 +242,9 @@
         "CorsConfiguration": {
           "CorsRules": [
             {
-              "AllowedHeaders": [
-                "*"
-              ],
-              "AllowedMethods": [
-                "GET",
-                "HEAD",
-                "PUT",
-                "POST",
-                "DELETE"
-              ],
-              "AllowedOrigins": [
-                "*"
-              ],
+              "AllowedHeaders": ["*"],
+              "AllowedMethods": ["GET", "HEAD", "PUT", "POST", "DELETE"],
+              "AllowedOrigins": ["*"],
               "ExposedHeaders": [
                 "x-amz-server-side-encryption",
                 "x-amz-request-id",
@@ -321,9 +311,7 @@
           }
         ]
       },
-      "DependsOn": [
-        "S3Bucket"
-      ],
+      "DependsOn": ["S3Bucket"],
       "Condition": "CreateAuthPublic"
     },
     "S3AuthProtectedPolicy": {
@@ -368,9 +356,7 @@
           }
         ]
       },
-      "DependsOn": [
-        "S3Bucket"
-      ],
+      "DependsOn": ["S3Bucket"],
       "Condition": "CreateAuthProtected"
     },
     "S3AuthPrivatePolicy": {
@@ -415,9 +401,7 @@
           }
         ]
       },
-      "DependsOn": [
-        "S3Bucket"
-      ],
+      "DependsOn": ["S3Bucket"],
       "Condition": "CreateAuthPrivate"
     },
     "S3AuthUploadPolicy": {
@@ -462,9 +446,7 @@
           }
         ]
       },
-      "DependsOn": [
-        "S3Bucket"
-      ],
+      "DependsOn": ["S3Bucket"],
       "Condition": "CreateAuthUploads"
     },
     "S3GuestPublicPolicy": {
@@ -509,9 +491,7 @@
           }
         ]
       },
-      "DependsOn": [
-        "S3Bucket"
-      ],
+      "DependsOn": ["S3Bucket"],
       "Condition": "CreateGuestPublic"
     },
     "S3AuthReadPolicy": {
@@ -574,9 +554,7 @@
           }
         ]
       },
-      "DependsOn": [
-        "S3Bucket"
-      ],
+      "DependsOn": ["S3Bucket"],
       "Condition": "AuthReadAndList"
     },
     "S3GuestReadPolicy": {
@@ -637,9 +615,7 @@
           }
         ]
       },
-      "DependsOn": [
-        "S3Bucket"
-      ],
+      "DependsOn": ["S3Bucket"],
       "Condition": "GuestReadAndList"
     }
   }
