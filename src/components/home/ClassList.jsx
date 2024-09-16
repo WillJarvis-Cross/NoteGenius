@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import DropdownMenu from './DropDownMenu'
+import './ClassList.css'
 
 const DotsButton = styled.button`
   background: none;
@@ -16,30 +17,17 @@ const DotsButton = styled.button`
   color: ${(props) => (props.$isActive ? 'white' : 'black')};
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent background */
-    border-radius: 50%; /* Makes the background circular */
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
   }
 
   &:focus {
-    outline: none; /* Remove the focus outline */
+    outline: none;
   }
 
   &:active {
-    background-color: rgba(0, 0, 0, 0.1); /* Prevent additional background color change on click */
-    box-shadow: none; /* Remove any box shadow on click */
-  }
-`
-
-const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  width: 100%;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: none;
   }
 `
 
@@ -66,10 +54,10 @@ const ClassList = ({
   return (
     <ul>
       {classes.map((className, index) => (
-        <ListItem
+        <li
           key={index}
           onClick={() => setCurrentClass(className)}
-          className={className === currentClass ? 'active' : 'title'}
+          className={`list-item ${className === currentClass ? 'active' : ''}`}
         >
           {renamingIndex === index ? (
             <form onSubmit={(e) => handleRenameSubmit(e, index)}>
@@ -78,11 +66,14 @@ const ClassList = ({
                 value={newClassName}
                 onChange={(e) => setNewClassName(e.target.value)}
                 autoFocus
+                className='rename-input'
               />
-              <button type="submit">Save</button>
-              <button type="button" onClick={() => setRenamingIndex(null)}>
-                Cancel
-              </button>
+              <div className='rename-buttons-container'>
+                <button className='rename-button' type="submit">Save</button>
+                <button className='rename-button' type="button" onClick={() => setRenamingIndex(null)}>
+                  Cancel
+                </button>
+              </div>
             </form>
           ) : (
             <>
@@ -109,7 +100,7 @@ const ClassList = ({
               )}
             </>
           )}
-        </ListItem>
+        </li>
       ))}
     </ul>
   )
