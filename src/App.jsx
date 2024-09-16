@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import SignInPage from './components/SignInPage';
-import HomePage from './components/HomePage';
+import SignInPage from './components/auth/SignInPage';
+import HomePage from './components/home/HomePage';
 import { Authenticator } from '@aws-amplify/ui-react';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css'; // Import the styles for the Authenticator component

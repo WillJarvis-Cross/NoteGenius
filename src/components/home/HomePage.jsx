@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Button } from '@aws-amplify/ui-react'
 import { Amplify } from 'aws-amplify'
-import awsExports from '../aws-exports'
+import awsExports from '../../aws-exports'
 import { signOut } from 'aws-amplify/auth'
 import ChatBox from './ChatBox'
 import ClassList from './ClassList'
