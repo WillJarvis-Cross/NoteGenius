@@ -31,11 +31,8 @@ const HomePage = () => {
     }
   }
 
-  const handleRenameClass = (index) => {
-    const newClassName = prompt('Enter new class name')
-    if (newClassName) {
-      setClasses(classes.map((cls, i) => (i === index ? newClassName : cls)))
-    }
+  const handleRenameClass = (index, newName) => {
+    setClasses(classes.map((cls, i) => (i === index ? newName : cls)))
   }
 
   const handleDeleteClass = (index) => {
