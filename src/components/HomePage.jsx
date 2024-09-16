@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import styled from 'styled-components';
@@ -6,6 +6,7 @@ import awsExports from '../aws-exports';
 import { signOut } from 'aws-amplify/auth';
 import ChatBox from './ChatBox';
 import './HomePage.css';
+import DropdownMenu from './DropDownMenu';
 
 Amplify.configure(awsExports);
 
@@ -20,12 +21,21 @@ const DotsButton = styled.button`
   margin-left: auto;
   width: 30px;
   height: 40px;
-  color: ${(props) => (props.isActive ? 'white' : 'black')};
+  color: ${(props) => (props.$isActive ? 'white' : 'black')};
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent background */
     border-radius: 50%; /* Makes the background circular */
     
+  }
+
+  &:focus {
+    outline: none; /* Remove the focus outline */
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1); /* Prevent additional background color change on click */
+    box-shadow: none; /* Remove any box shadow on click */
   }
 `;
 
@@ -90,6 +100,36 @@ const HomePage = () => {
     console.log('File to upload:', selectedFile);
   };
 
+  const handleRenameClass = (index) => {
+    const newClassName = prompt('Enter new class name');
+    if (newClassName) {
+      setClasses(classes.map((cls, i) => (i === index ? newClassName : cls)));
+    }
+  };
+
+  const handleDeleteClass = (index) => {
+    if (window.confirm('Are you sure you want to delete this class?')) {
+      setClasses(classes.filter((_, i) => i !== index));
+      if (currentClass === classes[index]) {
+        setCurrentClass(classes[0]);
+      }
+    }
+  };
+
+  const handleClickOutside = (e) => {
+    if (!e.target.closest('.dropdown-menu')) {
+      setActiveDropdown(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+
   return (
     <div className="outerContainer">
       <div className="home-page">
@@ -108,10 +148,22 @@ const HomePage = () => {
                     e.stopPropagation()
                     setActiveDropdown(index === activeDropdown ? null : index)
                   }}
-                  isActive={className === currentClass}
+                  $isActive={className === currentClass}
                 >
                   &#x22EE;
                 </DotsButton>
+                {index === activeDropdown && (
+                  <DropdownMenu
+                    $isVisible={index === activeDropdown}
+                    onRename={() => {
+                      handleClassNameChange;
+                      
+                    }}
+                    onDelete={() => {
+                      handleDeleteClass();
+                    }}
+                  />
+                )}
               </ListItem>
             ))}
           </ul>
