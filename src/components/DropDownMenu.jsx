@@ -27,14 +27,13 @@ const DropdownOption = styled.button`
   }
 `;
 
-const DropdownMenu = ({ $isVisible, onRename, onDelete }) => {
+const DropdownMenu = ({ $isVisible, onRename, onDelete, closeDropdown }) => {
     const dropdownRef = useRef(null);
-    console.log("NCJASK")
     useEffect(() => {
       const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
           // Close the dropdown if the click is outside of the dropdown
-          setActiveDropdown(null);
+          closeDropdown()
         }
       };
   
@@ -45,12 +44,10 @@ const DropdownMenu = ({ $isVisible, onRename, onDelete }) => {
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
-    }, [$isVisible]);
-  
-    if (!$isVisible) return null;
-  
+    }, [$isVisible, closeDropdown]);
+    
   return (
-    <DropdownMenuContainer $isVisible={$isVisible}>
+    <DropdownMenuContainer ref={dropdownRef} $isVisible={$isVisible}>
       <DropdownOption onClick={onRename}>Rename</DropdownOption>
       <DropdownOption onClick={onDelete}>Delete</DropdownOption>
     </DropdownMenuContainer>
