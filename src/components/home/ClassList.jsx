@@ -25,12 +25,7 @@ const DotsButton = styled.button`
   }
 
   &:active {
-    background-color: rgba(
-      0,
-      0,
-      0,
-      0.1
-    ); /* Prevent additional background color change on click */
+    background-color: rgba(0, 0, 0, 0.1); /* Prevent additional background color change on click */
     box-shadow: none; /* Remove any box shadow on click */
   }
 `
@@ -56,6 +51,17 @@ const ClassList = ({
   handleDeleteClass,
 }) => {
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [renamingIndex, setRenamingIndex] = useState(null)
+  const [newClassName, setNewClassName] = useState('')
+
+  const handleRenameSubmit = (e, index) => {
+    e.preventDefault()
+    if (newClassName.trim()) {
+      handleRenameClass(index, newClassName)
+      setRenamingIndex(null)
+      setNewClassName('')
+    }
+  }
 
   return (
     <ul>
@@ -65,23 +71,43 @@ const ClassList = ({
           onClick={() => setCurrentClass(className)}
           className={className === currentClass ? 'active' : 'title'}
         >
-          {className}
-          <DotsButton
-            onClick={(e) => {
-              e.stopPropagation()
-              setActiveDropdown(index === activeDropdown ? null : index)
-            }}
-            $isActive={className === currentClass}
-          >
-            &#x22EE;
-          </DotsButton>
-          {index === activeDropdown && (
-            <DropdownMenu
-              $isVisible={index === activeDropdown}
-              onRename={() => handleRenameClass(index)}
-              onDelete={() => handleDeleteClass(index)}
-              closeDropdown={() => setActiveDropdown(null)}
-            />
+          {renamingIndex === index ? (
+            <form onSubmit={(e) => handleRenameSubmit(e, index)}>
+              <input
+                type="text"
+                value={newClassName}
+                onChange={(e) => setNewClassName(e.target.value)}
+                autoFocus
+              />
+              <button type="submit">Save</button>
+              <button type="button" onClick={() => setRenamingIndex(null)}>
+                Cancel
+              </button>
+            </form>
+          ) : (
+            <>
+              {className}
+              <DotsButton
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setActiveDropdown(index === activeDropdown ? null : index)
+                }}
+                $isActive={className === currentClass}
+              >
+                &#x22EE;
+              </DotsButton>
+              {index === activeDropdown && (
+                <DropdownMenu
+                  $isVisible={index === activeDropdown}
+                  onRename={() => {
+                    setRenamingIndex(index)
+                    setNewClassName(className) // Pre-fill the input with the current class name
+                  }}
+                  onDelete={() => handleDeleteClass(index)}
+                  closeDropdown={() => setActiveDropdown(null)}
+                />
+              )}
+            </>
           )}
         </ListItem>
       ))}

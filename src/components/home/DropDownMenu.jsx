@@ -3,14 +3,14 @@ import styled from 'styled-components'
 
 const DropdownMenuContainer = styled.div`
   position: relative;
-  right: 0; /* Align with the right edge of the parent */
-  top: 100%; /* Place below the parent element */
+  right: 0;
+  top: 100%;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: ${(props) => (props.$isVisible ? 'block' : 'none')};
-  z-index: 1000; /* Ensure dropdown is on top */
+  z-index: 1000;
 `
 
 const DropdownOption = styled.button`
