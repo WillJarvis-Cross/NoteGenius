@@ -1,14 +1,14 @@
-import React from 'react';
-import { Button } from '@aws-amplify/ui-react';
+import React from 'react'
+import { Button } from '@aws-amplify/ui-react'
 
 const FileUpload = ({ selectedFile, setSelectedFile, fileInputRef }) => {
   const handleFileUploadClick = () => {
-    fileInputRef.current.click();
-  };
+    fileInputRef.current.click()
+  }
 
   const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
+    setSelectedFile(e.target.files[0])
+  }
 
   return (
     <div>
@@ -22,7 +22,7 @@ const FileUpload = ({ selectedFile, setSelectedFile, fileInputRef }) => {
       />
       {selectedFile && <p>Selected file: {selectedFile.name}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default FileUpload;
+export default FileUpload
