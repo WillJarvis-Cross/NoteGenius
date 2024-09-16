@@ -1,6 +1,6 @@
-import { Button } from '@aws-amplify/ui-react';
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import { Button } from '@aws-amplify/ui-react'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
 const ChatContainer = styled.div`
   position: fixed;
@@ -14,7 +14,7 @@ const ChatContainer = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-`;
+`
 
 const CustomButton = styled(Button)`
   background-color: #007bff;
@@ -27,7 +27,7 @@ const CustomButton = styled(Button)`
   &:hover {
     background-color: #0056b3;
   }
-`;
+`
 
 const TalkButton = styled(CustomButton)`
   background-color: #28a745;
@@ -39,13 +39,13 @@ const TalkButton = styled(CustomButton)`
   &:hover {
     background-color: #218838;
   }
-`;
+`
 
 const SendButton = styled(CustomButton)`
   width: 70px;
   height: 40px;
   margin-left: 10px;
-`;
+`
 
 const ChatHeader = styled.div`
   background-color: #007bff;
@@ -53,13 +53,13 @@ const ChatHeader = styled.div`
   padding: 10px;
   border-radius: 8px 8px 0 0;
   text-align: center;
-`;
+`
 
 const ChatBody = styled.div`
   flex: 1;
   padding: 10px;
   overflow-y: auto;
-`;
+`
 
 const ChatSection = styled.div`
   position: absolute;
@@ -70,7 +70,7 @@ const ChatSection = styled.div`
   color: #000;
   border-top: 1px solid #ccc;
   display: 'flex';
-`;
+`
 
 const ChatInput = styled.input`
   border: none;
@@ -80,7 +80,7 @@ const ChatInput = styled.input`
   outline: none;
   background-color: #fff;
   color: #000;
-`;
+`
 
 const CloseButton = styled.button`
   position: absolute;
@@ -95,23 +95,23 @@ const CloseButton = styled.button`
   &:hover {
     color: #121212;
   }
-`;
+`
 
 const ChatBox = ({ $currentClass }) => {
-  const [messages, setMessages] = useState([]);
-  const [isChatVisible, setIsChatVisible] = useState(false);
-  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState([])
+  const [isChatVisible, setIsChatVisible] = useState(false)
+  const [input, setInput] = useState('')
 
   const handleSendMessage = (e) => {
     if (e.key === 'Enter' && input.trim()) {
-      setMessages([...messages, { text: input, sender: 'user' }]);
-      setInput('');
+      setMessages([...messages, { text: input, sender: 'user' }])
+      setInput('')
     }
-  };
+  }
 
   const handleTalkWithTutor = () => {
-    setIsChatVisible(!isChatVisible);
-  };
+    setIsChatVisible(!isChatVisible)
+  }
 
   return (
     <div>
@@ -148,7 +148,7 @@ const ChatBox = ({ $currentClass }) => {
         </ChatContainer>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ChatBox;
+export default ChatBox

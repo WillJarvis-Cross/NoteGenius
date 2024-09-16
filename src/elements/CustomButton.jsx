@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledButton = styled.button`
   background-color: ${(props) => props.bgColor || '#007bff'};
@@ -13,9 +13,15 @@ const StyledButton = styled.button`
   &:hover {
     background-color: ${(props) => props.hoverColor || '#0056b3'};
   }
-`;
+`
 
-const CustomButton = ({ children, onClick, bgColor, textColor, hoverColor }) => {
+const CustomButton = ({
+  children,
+  onClick,
+  bgColor,
+  textColor,
+  hoverColor,
+}) => {
   return (
     <StyledButton
       onClick={onClick}
@@ -25,7 +31,7 @@ const CustomButton = ({ children, onClick, bgColor, textColor, hoverColor }) => 
     >
       {children}
     </StyledButton>
-  );
-};
+  )
+}
 
-export default CustomButton;
+export default CustomButton

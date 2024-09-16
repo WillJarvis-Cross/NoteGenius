@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useRef, useEffect } from 'react'
+import styled from 'styled-components'
 
 const DropdownMenuContainer = styled.div`
   position: relative;
@@ -11,7 +11,7 @@ const DropdownMenuContainer = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: ${(props) => (props.$isVisible ? 'block' : 'none')};
   z-index: 1000; /* Ensure dropdown is on top */
-`;
+`
 
 const DropdownOption = styled.button`
   background: none;
@@ -25,33 +25,42 @@ const DropdownOption = styled.button`
   &:hover {
     background-color: #f0f0f0;
   }
-`;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+  }
+`
 
 const DropdownMenu = ({ $isVisible, onRename, onDelete, closeDropdown }) => {
-    const dropdownRef = useRef(null);
-    useEffect(() => {
-      const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-          // Close the dropdown if the click is outside of the dropdown
-          closeDropdown()
-        }
-      };
-  
-      if ($isVisible) {
-        document.addEventListener('mousedown', handleClickOutside);
+  const dropdownRef = useRef(null)
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        // Close the dropdown if the click is outside of the dropdown
+        closeDropdown()
       }
-  
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [$isVisible, closeDropdown]);
-    
+    }
+
+    if ($isVisible) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [$isVisible, closeDropdown])
+
   return (
     <DropdownMenuContainer ref={dropdownRef} $isVisible={$isVisible}>
       <DropdownOption onClick={onRename}>Rename</DropdownOption>
       <DropdownOption onClick={onDelete}>Delete</DropdownOption>
     </DropdownMenuContainer>
-  );
-};
+  )
+}
 
-export default DropdownMenu;
+export default DropdownMenu

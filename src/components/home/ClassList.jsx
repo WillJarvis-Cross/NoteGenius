@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import DropdownMenu from './DropDownMenu';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import DropdownMenu from './DropDownMenu'
 
 const DotsButton = styled.button`
   background: none;
@@ -18,7 +18,6 @@ const DotsButton = styled.button`
   &:hover {
     background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent background */
     border-radius: 50%; /* Makes the background circular */
-    
   }
 
   &:focus {
@@ -26,10 +25,15 @@ const DotsButton = styled.button`
   }
 
   &:active {
-    background-color: rgba(0, 0, 0, 0.1); /* Prevent additional background color change on click */
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.1
+    ); /* Prevent additional background color change on click */
     box-shadow: none; /* Remove any box shadow on click */
   }
-`;
+`
 
 const ListItem = styled.li`
   display: flex;
@@ -42,10 +46,16 @@ const ListItem = styled.li`
   &:hover {
     background-color: #f0f0f0;
   }
-`;
+`
 
-const ClassList = ({ classes, currentClass, setCurrentClass, handleRenameClass, handleDeleteClass }) => {
-  const [activeDropdown, setActiveDropdown] = useState(null);
+const ClassList = ({
+  classes,
+  currentClass,
+  setCurrentClass,
+  handleRenameClass,
+  handleDeleteClass,
+}) => {
+  const [activeDropdown, setActiveDropdown] = useState(null)
 
   return (
     <ul>
@@ -58,8 +68,8 @@ const ClassList = ({ classes, currentClass, setCurrentClass, handleRenameClass, 
           {className}
           <DotsButton
             onClick={(e) => {
-              e.stopPropagation();
-              setActiveDropdown(index === activeDropdown ? null : index);
+              e.stopPropagation()
+              setActiveDropdown(index === activeDropdown ? null : index)
             }}
             $isActive={className === currentClass}
           >
@@ -76,7 +86,7 @@ const ClassList = ({ classes, currentClass, setCurrentClass, handleRenameClass, 
         </ListItem>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default ClassList;
+export default ClassList
