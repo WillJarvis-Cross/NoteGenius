@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Authenticator, Button } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
 import styled from 'styled-components';
-import awsExports from '../aws-exports';
+import awsExports from '../../aws-exports';
 import './SignInPage.css';
 //import { getFileUrl } from '../utils/storageService'
 
