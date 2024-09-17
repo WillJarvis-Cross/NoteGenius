@@ -102,3 +102,20 @@
   right: 4px;
   border: none;
 }
+
+.add-cancel {
+  display: flex;
+  justify-content: left;
+  gap: 16px;
+}
+
+.description-input {
+  border: none;
+  background-color: #f0f0f0;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.description-input:focus {
+  outline: none;
+}

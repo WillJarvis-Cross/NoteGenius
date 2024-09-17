@@ -11,35 +11,44 @@ import './HomePage.css'
 Amplify.configure(awsExports)
 
 const HomePage = () => {
-  const [classes, setClasses] = useState(['Math', 'Science', 'History'])
-  const [currentClass, setCurrentClass] = useState(classes[0])
+  const [classes, setClasses] = useState([{ name: 'Math', description: '' }, { name: 'Science', description: '' }, { name: 'History', description: '' }])
+  const [currentClass, setCurrentClass] = useState(0)
   const [isAddingClass, setIsAddingClass] = useState(false)
   const [newClassName, setNewClassName] = useState('')
   const [selectedFile, setSelectedFile] = useState(null)
+  const [newClassDescription, setNewClassDescription] = useState('')
   const fileInputRef = useRef(null)
 
   const handleAddClass = () => {
-    setIsAddingClass(true)
+    setIsAddingClass(!isAddingClass)
   }
 
   const handleAddClassSubmit = (e) => {
     e.preventDefault()
     if (newClassName.trim()) {
-      setClasses([...classes, newClassName.trim()])
+      const newEntry = { name: newClassName.trim(), description: '' }
+      setClasses([...classes, newEntry])
       setNewClassName('')
+      setNewClassDescription('')
       setIsAddingClass(false)
     }
   }
 
   const handleRenameClass = (index, newName) => {
-    setClasses(classes.map((cls, i) => (i === index ? newName : cls)))
+    setClasses(
+      classes.map((cls, i) =>
+        i === index
+          ? { ...cls, name: newName, description: cls.description }
+          : cls
+      )
+    )
   }
 
   const handleDeleteClass = (index) => {
     if (window.confirm('Are you sure you want to delete this class?')) {
       setClasses(classes.filter((_, i) => i !== index))
-      if (currentClass === classes[index]) {
-        setCurrentClass(classes[0])
+      if (currentClass === index) {
+        setCurrentClass(0)
       }
     }
   }
@@ -53,14 +62,17 @@ const HomePage = () => {
     }
   }
 
+  const classNamesArray = classes.map(cls => cls.name)
+  const currClassName = classNamesArray[currentClass]
+
   return (
     <div className="outerContainer">
       <div className="home-page">
         <div className="class-list">
           <h2 className="title">Classes</h2>
           <ClassList
-            classes={classes}
-            currentClass={currentClass}
+            classes={classNamesArray}
+            currentClass={currClassName}
             setCurrentClass={setCurrentClass}
             handleRenameClass={handleRenameClass}
             handleDeleteClass={handleDeleteClass}
@@ -75,7 +87,10 @@ const HomePage = () => {
                 placeholder="Enter new class name"
                 autoFocus
               />
-              <button type="submit">Add</button>
+              <div className='add-cancel'>
+                <button type="submit">Add</button>
+                <button type="button" onClick={handleAddClass}>Cancel</button>
+              </div>
             </form>
           ) : (
             <button onClick={handleAddClass}>Add Class</button>
@@ -85,13 +100,20 @@ const HomePage = () => {
           </div>
         </div>
         <div className="class-details">
-          <h2 className="title">{currentClass}</h2>
+          <h2 className="title">{currClassName}</h2>
+          <input
+            className='description-input'
+            type='text'
+            value={newClassDescription}
+            onChange={(e) => setNewClassDescription(e.target.value)}
+            placeholder='Enter class description'
+          />
           <FileUpload
             selectedFile={selectedFile}
             setSelectedFile={setSelectedFile}
             fileInputRef={fileInputRef}
           />
-          <ChatBox $currentClass={currentClass} />
+          <ChatBox $currentClass={currClassName} />
         </div>
       </div>
     </div>
