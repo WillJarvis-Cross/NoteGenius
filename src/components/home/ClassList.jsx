@@ -56,7 +56,7 @@ const ClassList = ({
       {classes.map((className, index) => (
         <li
           key={index}
-          onClick={() => setCurrentClass(className)}
+          onClick={() => setCurrentClass(index)}
           className={`list-item ${className === currentClass ? 'active' : ''}`}
         >
           {renamingIndex === index ? (
